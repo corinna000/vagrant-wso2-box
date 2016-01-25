@@ -31,6 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     wso2esb.vm.network "forwarded_port", guest: 9765, host: 9765
     wso2esb.vm.network "forwarded_port", guest: 8282, host: 8282
     wso2esb.vm.network "forwarded_port", guest: 8245, host: 8245
+
     #BAM
     wso2esb.vm.network "forwarded_port", guest: 9444, host: 9444
     wso2esb.vm.network "forwarded_port", guest: 9764, host: 9764
@@ -38,12 +39,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     #GREG
     wso2esb.vm.network "forwarded_port", guest: 9446, host: 9446
 
+    #ES
+    wso2esb.vm.network "forwarded_port", guest: 9447, host: 9447
+    wso2esb.vm.network "forwarded_port", guest: 9767, host: 9767
+    wso2esb.vm.network "forwarded_port", guest: 8284, host: 8284
+    wso2esb.vm.network "forwarded_port", guest: 8247, host: 8247
+
     wso2esb.vm.network :private_network, ip: "192.168.11.11"
     wso2esb.vm.hostname = "wso2esb.local"
 
     wso2esb.vm.provider "virtualbox" do |vb|
       vb.name = 'wso2esb-box'
-      vb.customize ["modifyvm", :id, "--memory", "4096"]
+      vb.customize ["modifyvm", :id, "--memory", "3072"]
       vb.customize ["modifyvm", :id, "--cpus", "2"]
       vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]

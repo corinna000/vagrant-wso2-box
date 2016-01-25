@@ -2,3 +2,5 @@
 .idea
 .vagrant
 vagrant-wso2-box.iml
+.*.swp
+.DS_Store

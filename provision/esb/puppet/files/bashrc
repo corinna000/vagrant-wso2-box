@@ -9,4 +9,5 @@ fi
 #export JAVA_HOME=/usr/java/default
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle/
 export PATH=${JAVA_HOME}/bin:${PATH}
-export MAVEN_OPTS="-Xms1024m -Xmx1024m -XX:MaxPermSize=1024m"
+#cac: reducing memory usage from 1024m to 512m
+export MAVEN_OPTS="-Xms512m -Xmx512m -XX:MaxPermSize=512m"

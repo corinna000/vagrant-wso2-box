@@ -1,0 +1,27 @@
+#! /bin/sh
+export JAVA_HOME=/usr/java/default
+export SERVICE_HOME='/opt/wso2is-5.1.0'
+export SERVICE_NAME='WSO2 Identity Server'
+export USER=vagrant
+
+startcmd="$SERVICE_HOME/bin/wso2server.sh start > /dev/null &"
+restartcmd="$SERVICE_HOME/bin/wso2server.sh restart > /dev/null &"
+stopcmd="$SERVICE_HOME/bin/wso2server.sh stop > /dev/null &"
+
+case "$1" in
+  start)
+    echo "Starting WSO2 Application Server ..."
+    su -c "${startcmd}" $USER
+    ;;
+  restart)
+    echo "Re-starting WSO2 Application Server ..."
+    su -c "${restartcmd}" $USER
+    ;;
+  stop)
+    echo "Stopping WSO2 Application Server ..."
+    su -c "${stopcmd}" $USER
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
